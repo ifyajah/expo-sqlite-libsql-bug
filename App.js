@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SQLiteProvider, useSQLiteContext } from 'expo-sqlite';
+import { View, Text } from 'react-native';
+
+function TestDB() {
+  const db = useSQLiteContext();
+  return <Text>DB ready</Text>;
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SQLiteProvider
+      databaseName="test.db"
+      options={{
+        libSQLOptions: {
+          url: process.env.LIBSQL_URL,
+          authToken: process.env.LIBSQL_AUTH_TOKEN
+        }
+      }}
+    >
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TestDB />
+      </View>
+    </SQLiteProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

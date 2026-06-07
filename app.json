@@ -15,10 +15,25 @@
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "package": "com.apostle001.exposqlitelibsqlbug"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-sqlite",
+        {
+          "useLibSQL": true
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bbcd6fe2-5827-45ce-aa45-ccef3c4885fe"
+      }
+    },
+    "owner": "apostle001"
   }
 }
